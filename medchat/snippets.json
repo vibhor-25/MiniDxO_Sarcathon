@@ -106,6 +106,231 @@
     "text": "Dehydration can result from vomiting or diarrhea and causes dizziness, decreased urination, dry mouth, and weakness; severe dehydration is an emergency, especially in children and older adults.",
     "diseases": ["Dehydration"],
     "symptoms": ["dizziness", "decreased urination", "dry mouth", "weakness"]
+  },
+  {
+    "id": "mayoclinic-asthma-1",
+    "title": "Asthma — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20353079",
+    "text": "Asthma is a chronic condition causing inflammation and narrowing of the airways, leading to recurrent episodes of wheezing, chest tightness, coughing, and shortness of breath.",
+    "diseases": ["Asthma"],
+    "symptoms": ["wheezing", "chest tightness", "cough", "shortness of breath"]
+  },
+  {
+    "id": "nih-concussion-1",
+    "title": "Concussion — NINDS (summary)",
+    "source": "National Institute of Neurological Disorders and Stroke (NINDS)",
+    "url": "https://www.ninds.nih.gov/Disorders/All-Disorders/Concussion-Information-Page",
+    "text": "A concussion is a traumatic brain injury often caused by a blow to the head, resulting in symptoms like headache, confusion, dizziness, nausea, and sensitivity to light or noise.",
+    "diseases": ["Concussion", "Traumatic brain injury"],
+    "symptoms": ["headache", "confusion", "dizziness", "nausea", "sensitivity to light"]
+  },
+  {
+    "id": "medlineplus-mono-1",
+    "title": "Infectious mononucleosis (Mono) — MedlinePlus (summary)",
+    "source": "MedlinePlus",
+    "url": "https://medlineplus.gov/mononucleosis.html",
+    "text": "Often called 'mono,' this viral infection typically causes profound fatigue, fever, sore throat, and swollen lymph nodes, primarily in the neck and armpits.",
+    "diseases": ["Infectious mononucleosis"],
+    "symptoms": ["fatigue", "fever", "sore throat", "swollen lymph nodes"]
+  },
+  {
+    "id": "cdc-meningitis-1",
+    "title": "Meningitis — CDC (summary)",
+    "source": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/meningitis/index.html",
+    "text": "Meningitis is an inflammation of the membranes surrounding the brain and spinal cord, presenting with a classic triad of high fever, severe headache, and neck stiffness, and often requiring urgent medical attention.",
+    "diseases": ["Meningitis"],
+    "symptoms": ["high fever", "severe headache", "neck stiffness", "photophobia", "vomiting"]
+  },
+  {
+    "id": "cleveland-angina-1",
+    "title": "Angina (Chest Pain) — Cleveland Clinic (summary)",
+    "source": "Cleveland Clinic",
+    "url": "https://my.clevelandclinic.org/health/diseases/16847-angina",
+    "text": "Angina is chest pain or discomfort caused by reduced blood flow to the heart muscle, often described as squeezing, pressure, or heaviness, and may radiate to the jaw or arm; new or worsening angina is a medical emergency.",
+    "diseases": ["Angina", "Ischemic Heart Disease"],
+    "symptoms": ["chest pain", "chest pressure", "shortness of breath", "pain radiating to jaw", "sweating"]
+  },
+  {
+    "id": "nih-tendinitis-1",
+    "title": "Tendinitis — NIH (summary)",
+    "source": "National Institutes of Health",
+    "url": "https://www.niams.nih.gov/health-topics/tendinitis",
+    "text": "Tendinitis is an inflammation of a tendon, a thick cord that attaches muscle to bone, often causing pain, tenderness, and mild swelling near a joint (like the elbow, shoulder, or heel), usually triggered by repetitive motion.",
+    "diseases": ["Tendinitis", "Tendonitis"],
+    "symptoms": ["joint pain", "tenderness", "swelling near joint", "stiffness", "pain worsens with activity"]
+  },
+  {
+    "id": "mayoclinic-hypoglycemia-1",
+    "title": "Hypoglycemia (Low Blood Sugar) — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/hypoglycemia/symptoms-causes/syc-20373685",
+    "text": "Hypoglycemia is a condition where the blood sugar level is dangerously low. Symptoms can include shaking, sweating, heart palpitations, confusion, hunger, and sometimes fainting or seizures.",
+    "diseases": ["Hypoglycemia", "Low Blood Sugar"],
+    "symptoms": ["shaking", "sweating", "confusion", "dizziness", "fast heartbeat", "hunger"]
+  },
+  {
+    "id": "cdc-shingles-1",
+    "title": "Shingles — CDC (summary)",
+    "source": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/shingles/about/index.html",
+    "text": "Shingles is a viral infection that causes a painful rash, typically presenting as a stripe of blisters that wraps around one side of the body or face, often preceded by pain or tingling in the area.",
+    "diseases": ["Shingles", "Herpes Zoster"],
+    "symptoms": ["painful rash", "blisters", "tingling", "burning sensation", "one-sided rash"]
+  },
+  {
+    "id": "aao-pinkeye-1",
+    "title": "Conjunctivitis (Pink Eye) — AAO (summary)",
+    "source": "American Academy of Ophthalmology (AAO)",
+    "url": "https://www.aao.org/eye-health/diseases/pink-eye-conjunctivitis",
+    "text": "Conjunctivitis, or pink eye, is an inflammation of the clear membrane lining the eyelid and eyeball, making the eyes look red or pink, often accompanied by itching, burning, and discharge that can crust over the lashes.",
+    "diseases": ["Conjunctivitis", "Pink Eye"],
+    "symptoms": ["red eyes", "itchy eyes", "burning eyes", "eye discharge", "crusting lashes"]
+  },
+  {
+    "id": "mayoclinic-cholecystitis-1",
+    "title": "Cholecystitis (Gallbladder Inflammation) — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/cholecystitis/symptoms-causes/syc-20364846",
+    "text": "Cholecystitis is inflammation of the gallbladder, often caused by gallstones, leading to sudden, severe pain in the upper right or center abdomen, which may spread to the right shoulder or back, accompanied by nausea or vomiting.",
+    "diseases": ["Cholecystitis", "Gallbladder Inflammation"],
+    "symptoms": ["severe abdominal pain", "pain in upper right abdomen", "nausea", "vomiting", "pain radiating to shoulder"]
+  },
+  {
+    "id": "nih-kidneystone-1",
+    "title": "Kidney Stones — NIH (summary)",
+    "source": "National Institutes of Health",
+    "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-stones",
+    "text": "Kidney stones are hard deposits that form in the kidneys and can cause severe, fluctuating pain (colic) in the side and back, below the ribs, often radiating to the lower abdomen or groin, accompanied by painful urination or blood in urine.",
+    "diseases": ["Kidney Stones", "Nephrolithiasis"],
+    "symptoms": ["severe back pain", "flank pain", "painful urination", "blood in urine", "nausea"]
+  },
+  {
+    "id": "medlineplus-anxiety-1",
+    "title": "Generalized Anxiety Disorder (GAD) — MedlinePlus (summary)",
+    "source": "MedlinePlus",
+    "url": "https://medlineplus.gov/generalizedanxietydisorder.html",
+    "text": "Generalized Anxiety Disorder (GAD) is characterized by chronic, excessive worry about everyday events, accompanied by physical symptoms like restlessness, muscle tension, difficulty concentrating, and sleep disturbance.",
+    "diseases": ["Generalized Anxiety Disorder", "Anxiety"],
+    "symptoms": ["excessive worry", "restlessness", "muscle tension", "difficulty concentrating", "insomnia"]
+  },
+  {
+    "id": "cdc-pertussis-1",
+    "title": "Pertussis (Whooping Cough) — CDC (summary)",
+    "source": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/pertussis/about/index.html",
+    "text": "Pertussis, or whooping cough, is a highly contagious bacterial disease causing uncontrollable, violent coughing that often makes it hard to breathe, followed by a characteristic 'whooping' sound when inhaling.",
+    "diseases": ["Pertussis", "Whooping Cough"],
+    "symptoms": ["uncontrollable cough", "coughing fits", "whooping sound", "vomiting after coughing", "runny nose"]
+  },
+  {
+    "id": "mayoclinic-sciatica-1",
+    "title": "Sciatica — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/sciatica/symptoms-causes/syc-20377435",
+    "text": "Sciatica refers to pain that radiates along the path of the sciatic nerve, typically from the lower back through the hips and buttocks and down one leg, often described as a searing or shooting pain, sometimes accompanied by numbness or weakness.",
+    "diseases": ["Sciatica"],
+    "symptoms": ["lower back pain", "shooting leg pain", "numbness in leg", "weakness in foot", "pain on one side"]
+  },
+  {
+    "id": "who-stroke-1",
+    "title": "Stroke (Triage Note)",
+    "source": "World Health Organization (Emergency Guidance)",
+    "url": "https://www.who.int/news-room/fact-sheets/detail/stroke-cerebrovascular-accident",
+    "text": "A stroke occurs when blood flow to a part of the brain is stopped. Symptoms often come on suddenly and include face drooping, arm weakness, and speech difficulty, requiring immediate emergency response.",
+    "diseases": ["Stroke", "Cerebrovascular Accident"],
+    "symptoms": ["face drooping", "arm weakness", "slurred speech", "sudden confusion", "severe headache"]
+  },
+  {
+    "id": "cdc-dengue-1",
+    "title": "Dengue Fever — CDC (summary)",
+    "source": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/dengue/about/symptoms.html",
+    "text": "Dengue fever, a mosquito-borne illness, is characterized by sudden, high fever, severe headache, severe pain behind the eyes, and intense joint and muscle pain, often called 'break-bone fever,' along with fatigue.",
+    "diseases": ["Dengue Fever"],
+    "symptoms": ["high fever", "severe body ache", "severe joint pain", "fatigue", "headache", "pain behind eyes"]
+  },
+  {
+    "id": "mayoclinic-rheumatoid-1",
+    "title": "Rheumatoid Arthritis (RA) — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/rheumatoid-arthritis/symptoms-causes/syc-20353648",
+    "text": "Rheumatoid Arthritis (RA) is an autoimmune disorder causing chronic inflammation of the joints, leading to pain, swelling, stiffness (especially in the morning), fatigue, and occasionally a low-grade fever.",
+    "diseases": ["Rheumatoid Arthritis"],
+    "symptoms": ["joint pain", "joint stiffness", "fatigue", "swollen joints", "low-grade fever"]
+  },
+  {
+    "id": "cdc-zika-1",
+    "title": "Zika Virus — CDC (summary)",
+    "source": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/zika/symptoms/index.html",
+    "text": "Zika is a virus spread primarily by mosquitoes, usually causing mild, generalized symptoms including fever, rash, joint pain, muscle pain, and conjunctivitis (red eyes); symptoms typically last for several days to a week.",
+    "diseases": ["Zika Virus"],
+    "symptoms": ["fever", "rash", "joint pain", "muscle pain", "red eyes"]
+  },
+  {
+    "id": "mayoclinic-lupus-1",
+    "title": "Systemic Lupus Erythematosus (Lupus) — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/lupus/symptoms-causes/syc-20365789",
+    "text": "Lupus is a chronic autoimmune disease that can affect multiple systems, commonly presenting with joint pain, skin rash (often butterfly-shaped across the face), unexplained fever, and persistent, overwhelming fatigue.",
+    "diseases": ["Systemic Lupus Erythematosus", "Lupus"],
+    "symptoms": ["joint pain", "fatigue", "unexplained fever", "skin rash", "chest pain"]
+  },
+  {
+    "id": "medlineplus-bronchitis-1",
+    "title": "Acute Bronchitis — MedlinePlus (summary)",
+    "source": "MedlinePlus",
+    "url": "https://medlineplus.gov/bronchitis.html",
+    "text": "Acute bronchitis is inflammation of the bronchial tubes, often following a cold or flu, causing a persistent cough (sometimes with mucus), chest discomfort, mild fever, body aches, and fatigue.",
+    "diseases": ["Acute Bronchitis"],
+    "symptoms": ["persistent cough", "chest discomfort", "mild fever", "body ache", "fatigue", "sore throat"]
+  },
+  {
+    "id": "mayoclinic-toothache-1",
+    "title": "Toothache (Dental Pain) — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/symptoms/toothache/basics/when-to-see-doctor/sym-20050929",
+    "text": "A toothache is pain in or around a tooth, often caused by decay or infection. Pain can be sharp, throbbing, or worsen with hot/cold; it may be accompanied by swelling in the jaw or face, and sometimes fever if an abscess is present.",
+    "diseases": ["Dental Abscess", "Tooth Decay"],
+    "symptoms": ["tooth ache", "throbbing pain", "pain with hot/cold", "gum swelling", "face swelling", "fever"]
+  },
+  {
+    "id": "nih-fibromyalgia-1",
+    "title": "Fibromyalgia — NIH (summary)",
+    "source": "National Institutes of Health",
+    "url": "https://www.niams.nih.gov/health-topics/fibromyalgia",
+    "text": "Fibromyalgia is a disorder characterized by widespread musculoskeletal pain (including **leg ache** and **body ache**), accompanied by fatigue, sleep disturbances, and cognitive difficulties ('fibro fog').",
+    "diseases": ["Fibromyalgia"],
+    "symptoms": ["widespread body ache", "leg ache", "fatigue", "sleep problems", "muscle stiffness", "headache"]
+  },
+  {
+    "id": "mayoclinic-lyme-1",
+    "title": "Lyme Disease — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/lyme-disease/symptoms-causes/syc-20374651",
+    "text": "Lyme disease is a tick-borne bacterial infection. Early symptoms include a characteristic bull's-eye rash (erythema migrans), fever, chills, **body aches**, and fatigue.",
+    "diseases": ["Lyme Disease"],
+    "symptoms": ["bull's-eye rash", "fever", "chills", "body ache", "fatigue", "headache"]
+  },
+  {
+    "id": "cdc-ebola-1",
+    "title": "Ebola Virus Disease (EVD) — CDC (summary)",
+    "source": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/vhf/ebola/symptoms/index.html",
+    "text": "Ebola is a rare but severe and often fatal disease. Early symptoms include sudden high fever, severe headache, muscle pain, weakness, and fatigue, followed by vomiting, diarrhea, and sometimes unexplained bleeding.",
+    "diseases": ["Ebola Virus Disease"],
+    "symptoms": ["sudden high fever", "severe body ache", "headache", "weakness", "vomiting", "bleeding"]
+  },
+  {
+    "id": "nih-chronic-fatigue-1",
+    "title": "Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS) — NIH (summary)",
+    "source": "National Institutes of Health",
+    "url": "https://www.niaid.nih.gov/diseases-conditions/myalgic-encephalomyelitis-chronic-fatigue-syndrome",
+    "text": "ME/CFS is a complex, long-term illness characterized by extreme **tiredness** and **fatigue** that worsens with physical or mental activity and is not relieved by rest, often accompanied by widespread pain and sleep issues.",
+    "diseases": ["Chronic Fatigue Syndrome"],
+    "symptoms": ["extreme tiredness", "fatigue", "body ache", "sleep problems", "post-exertional malaise"]
   }
 ]
 

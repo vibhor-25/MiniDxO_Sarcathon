@@ -16,7 +16,8 @@ import re
 import time
 import math
 from pathlib import Path
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv(), override=True)
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
@@ -25,19 +26,15 @@ from sentence_transformers import SentenceTransformer, util
 # Anthropic SDK
 from anthropic import Anthropic
 
-load_dotenv()
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+print("ANTHROPIC_API_KEY:", ANTHROPIC_API_KEY)
 if not ANTHROPIC_API_KEY:
     raise SystemExit("Missing ANTHROPIC_API_KEY in .env")
 
 # Configure / tune these
 MODEL_CANDIDATES = [
-    "claude-3-5-sonnet-latest",
-    "claude-3-5-sonnet-20241022",
-    "claude-3-sonnet-20240229",
-    "claude-3-haiku-20240307",
-    "claude-4-sonnet"
+    "claude-3-haiku-20240307", 
 ]
 # If your key supports a specific model, it will be auto-selected at runtime.
 
@@ -105,33 +102,32 @@ def robust_json_parse(s):
         except Exception as e:
             raise ValueError("Failed to parse JSON from model output: " + str(e))
 
-def try_models_call(prompt, max_tokens=700, temperature=0.2):
+def try_models_call(prompt, max_tokens=700, temperature=0.0):
     """
-    Call Claude and guarantee a clean JSON string back.
+    Calls Claude using the new Anthropic Messages API only.
+    Compatible with Claude 3/3.5 models.
     """
     last_err = None
     for model in MODEL_CANDIDATES:
+        print(f"\n[try_models_call] Attempting model: {model}")
         try:
             resp = anthropic_client.messages.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt + "\n\nRespond ONLY with valid JSON. No commentary, no markdown, nothing outside the JSON braces."}],
                 max_tokens=max_tokens,
-                temperature=temperature
+                temperature=temperature,
+                messages=[{"role": "user", "content": prompt}]
             )
-            text = ""
-            try:
-                text = resp.content[0].text
-            except Exception:
-                text = str(resp)
-            start = text.find("{")
-            end = text.rfind("}")
-            if start != -1 and end != -1 and end > start:
-                text = text[start:end+1]
-            return text
+            text = resp.content[0].text
+            print(f"[try_models_call] [] Model {model} succeeded, len={len(text)}")
+            match = re.search(r"\{[\s\S]*\}", text)
+            return match.group(0) if match else text.strip()
         except Exception as e:
+            print(f"[try_models_call] ❌ Model {model} failed: {e}")
             last_err = e
+            time.sleep(0.1)
             continue
-    raise RuntimeError(f"All Claude models failed. Last error: {last_err}")
+    raise RuntimeError(f"No available model succeeded. Last error: {last_err}")
+
 
 
 # -------------------------
@@ -254,7 +250,9 @@ def get_candidate_diseases(symptoms):
     ranked = matches['disease'].value_counts().index.tolist()
     return ranked[:12]
 
-
+# -------------------------
+# Retrieval: top-k snippets
+# -------------------------
 def retrieve_top_snippets(query, k=TOP_SNIPPETS):
     if not SNIPPETS_INDEX:
         return []
@@ -370,9 +368,14 @@ def is_greeting_or_smalltalk(message):
 def handle_message():
     try:
         payload = request.get_json(force=True)
+        print("\n==========================")
+        print("[handle_message] Incoming payload:", json.dumps(payload, indent=2))
+        print("==========================")
+
         message = (payload.get("message") or "").strip()
         history = payload.get("history", []) or []
         answered_follow_up = bool(payload.get("answered_follow_up", False))
+
 
         # quick sanitization
         if not isinstance(history, list):
@@ -420,38 +423,131 @@ def handle_message():
         top_snips = retrieve_top_snippets(retrieval_query, k=TOP_SNIPPETS)
 
         # 5) If not answered_follow_up: run Questioner role
+        print(f"[DEBUG] Extracted symptoms: {symptoms}")
+        print(f"[DEBUG] Candidate diseases: {candidates}")
+        print(f"[DEBUG] Answered follow-up? {answered_follow_up}")
+
         if not answered_follow_up:
             q_prompt = questioner_prompt(symptoms, history, candidates, top_snips)
+
+            q_raw = None
+            q_json = {}
+            # 1) First attempt
             try:
-                q_raw = try_models_call(q_prompt, max_tokens=300, temperature=0.0)
+                q_raw = try_models_call(q_prompt, max_tokens=350, temperature=0.15)
+                print("[QUESTIONER RAW OUTPUT] >>>", q_raw)
                 try:
                     q_json = robust_json_parse(q_raw)
+                    print("[QUESTIONER PARSED JSON] >>>", q_json)
                 except Exception:
-                    print("Claude invalid JSON:", q_raw)
+                    # try to extract JSON substring heuristically
+                    m = re.search(r"(\{[\s\S]*\})", q_raw or "")
+                    if m:
+                        try:
+                            q_json = json.loads(m.group(1))
+                        except Exception:
+                            q_json = {}
+            except Exception as e:
+                q_raw = None
+                q_json = {}
+            
+                        
+
+
+            # 2) If still empty, retry once with a stricter short prompt
+            if not q_json:
+                strict_q = (
+                    "Respond ONLY with valid JSON. Do not include any text outside the JSON.\n"
+                    + questioner_prompt(symptoms, history, candidates, top_snips)
+                    + "\n\nExample: {\"follow_up\":\"Do you have a cough?\",\"rationale\":\"Cough helps distinguish viral vs bacterial\"}"
+                )
+                try:
+                    q_raw = try_models_call(strict_q, max_tokens=300, temperature=0.0)
+                    try:
+                        q_json = robust_json_parse(q_raw)
+                    except Exception:
+                        m = re.search(r"(\{[\s\S]*\})", q_raw or "")
+                        if m:
+                            try:
+                                q_json = json.loads(m.group(1))
+                            except Exception:
+                                q_json = {}
+                except Exception:
                     q_json = {}
 
-            except Exception:
-                # fallback conservative follow-up
-                q_json = {"follow_up": "How long have you had these symptoms?", "rationale": "Duration helps refine probable causes."}
-            # If questioner returned general message
+            # Debug log (print raw output when parsing failed)
+            if not q_json:
+                print("QUESTIONER: failed to parse JSON. raw output:\n", q_raw)
+
+            # 3) If still no valid JSON, fall back to deterministic smart questions (not the same every time)
+            if not q_json:
+                # If we detected some symptoms, ask a targeted question
+                if symptoms:
+                    # ask about the highest-priority symptom
+                    s0 = symptoms[0] if len(symptoms) > 0 else None
+                    if s0:
+                        fallback_q = f"Can you describe how severe your {s0} is and when it started?"
+                        fallback_r = f"Severity and onset of {s0} help narrow causes."
+                    else:
+                        fallback_q = "When did your symptoms start?"
+                        fallback_r = "Duration helps narrow possible causes."
+                else:
+                    # varied generic fallbacks to avoid monotony
+                    fallback_options = [
+                        ("Can you list your main symptoms in one sentence?", "A list helps me prioritize causes."),
+                        ("When did your symptoms start?", "Duration helps refine likely diagnoses."),
+                        ("Are you experiencing fever, cough, or difficulty breathing?", "These are key differentiators."),
+                        ("Do you have any pain or bleeding right now?", "Active bleeding or severe pain may change urgency.")
+                    ]
+                    # choose deterministically by hashing msg so demo is reproducible
+                    idx = abs(hash(message)) % len(fallback_options)
+                    fallback_q, fallback_r = fallback_options[idx]
+
+                q_json = {"follow_up": fallback_q, "rationale": fallback_r}
+
+            # Handle general responses from model
             if q_json.get("type") == "general":
-                return jsonify({"type":"general", "assistant_text": q_json.get("assistant_text","Please describe symptoms.")})
+                return jsonify({"type": "general", "assistant_text": q_json.get("assistant_text", "Please describe symptoms.")})
+
+            # If model provided follow_up, return it
             follow_up = q_json.get("follow_up")
             if follow_up:
                 return jsonify({
                     "type": "follow_up",
                     "assistant_text": follow_up,
-                    "rationale": q_json.get("rationale","")
+                    "rationale": q_json.get("rationale", "")
                 })
-            # else fall through to diagnoser (if questioner returned null)
+            # else fall through to diagnoser
+        # --------------------------------------------------------------------
+
 
         # 6) Diagnoser role (we are either answering follow-up or questioner returned no follow-up)
+        
+        
+        
+        
+        
+        
         d_prompt = diagnoser_prompt(symptoms, history, candidates, top_snips)
+
+
+
+
+
         try:
-            d_raw = try_models_call(d_prompt, max_tokens=500, temperature=0.0)
+            strict_d_prompt = (
+            d_prompt
+            + "\n\nRespond ONLY with valid JSON (no commentary, no markdown, no explanations outside braces)."
+            + "\nExample: {\"top_diagnosis\":\"Strep throat\",\"confidence\":0.8,\"reasoning\":[\"Fever and sore throat\",\"White patches indicate bacterial infection\"]}"
+            )
+            d_raw = try_models_call(strict_d_prompt, max_tokens=500, temperature=0.0)
+            print("[DIAGNOSER RAW OUTPUT] >>>", d_raw)
             d_json = robust_json_parse(d_raw)
-        except Exception:
+            print("[DIAGNOSER PARSED JSON] >>>", d_json)
+        except Exception as e:
+            print("DIAGNOSER raw output (failed):", str(e))
             d_json = {"top_diagnosis": "Uncertain", "confidence": 0.0, "reasoning": ["Could not parse model output."]}
+
 
         # If diagnoser says need_more_info
         if d_json.get("need_more_info"):
@@ -487,6 +583,13 @@ def handle_message():
             assistant_text += "I need more information to be certain."
 
         citations = [{"source": s["source"], "url": s.get("url",""), "excerpt": s["text"][:240], "score": s["score"]} for s in top_snips]
+        print("[FINAL RESPONSE] >>>", json.dumps({
+            "type": "diagnosis",
+            "assistant_text": assistant_text,
+            "diagnosis": top_diag,
+            "confidence": confidence,
+            "reasoning": reasoning
+        }, indent=2))
 
         return jsonify({
             "type": "diagnosis",

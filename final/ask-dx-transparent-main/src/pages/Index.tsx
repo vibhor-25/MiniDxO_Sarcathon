@@ -98,6 +98,9 @@ const Index = () => {
       setDiagnosis(conv.diagnosis || undefined);
     }
 
+    // Clear any emergency state when switching conversations
+    setEmergency(false);
+
     const { data, error } = await supabase
       .from("messages")
       .select("*")
@@ -138,6 +141,8 @@ const Index = () => {
       setConfidence(0);
       setDiagnosis(undefined);
       setQuickResponses([]);
+      // Ensure emergency flag is cleared for a fresh conversation
+      setEmergency(false);
 
       // Save initial message
       await supabase.from("messages").insert({
