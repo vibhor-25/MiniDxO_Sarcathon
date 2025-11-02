@@ -1,0 +1,111 @@
+[
+  {
+    "id": "mayoclinic-strep-1",
+    "title": "Strep throat — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/strep-throat/symptoms-causes/syc-20350338",
+    "text": "Strep throat is a bacterial infection of the throat and tonsils that commonly causes sudden sore throat, pain on swallowing, fever, and sometimes white patches on the tonsils.",
+    "diseases": ["Strep throat"],
+    "symptoms": ["sore throat", "fever", "painful swallowing", "white patches"]
+  },
+  {
+    "id": "medlineplus-cold-1",
+    "title": "Common cold — MedlinePlus (summary)",
+    "source": "MedlinePlus",
+    "url": "https://medlineplus.gov/commoncold.html",
+    "text": "The common cold is a mild viral infection that typically causes runny or stuffy nose, sneezing, sore throat, cough, and sometimes low-grade fever; symptoms are usually gradual and self-limiting.",
+    "diseases": ["Common cold"],
+    "symptoms": ["runny nose", "sore throat", "cough", "sneezing", "low-grade fever"]
+  },
+  {
+    "id": "mayoclinic-flu-1",
+    "title": "Influenza (Flu) — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/flu/symptoms-causes/syc-20351719",
+    "text": "Influenza is a viral respiratory illness that often causes sudden high fever, chills, muscle aches, cough, sore throat, headache, and profound fatigue.",
+    "diseases": ["Influenza"],
+    "symptoms": ["fever", "chills", "muscle aches", "cough", "fatigue", "headache"]
+  },
+  {
+    "id": "who-covid-1",
+    "title": "COVID-19 — WHO (brief)",
+    "source": "World Health Organization",
+    "url": "https://www.who.int/health-topics/coronavirus",
+    "text": "COVID-19 is caused by SARS-CoV-2 and commonly presents with fever, dry cough, fatigue, and may include loss of smell or taste; severe cases can cause difficulty breathing.",
+    "diseases": ["COVID-19"],
+    "symptoms": ["fever", "dry cough", "fatigue", "loss of smell", "shortness of breath"]
+  },
+  {
+    "id": "cleveland-gastro-1",
+    "title": "Gastroenteritis — Cleveland Clinic (summary)",
+    "source": "Cleveland Clinic",
+    "url": "https://my.clevelandclinic.org/health/diseases/15225-gastroenteritis",
+    "text": "Gastroenteritis (stomach flu) causes inflammation of the stomach and intestines, leading to nausea, vomiting, abdominal cramps, and diarrhea, often developing over hours to days.",
+    "diseases": ["Gastroenteritis"],
+    "symptoms": ["nausea", "vomiting", "diarrhea", "abdominal pain", "cramps"]
+  },
+  {
+    "id": "nih-pneumonia-1",
+    "title": "Pneumonia — NIH (summary)",
+    "source": "National Institutes of Health",
+    "url": "https://www.niaid.nih.gov/diseases-conditions/pneumonia",
+    "text": "Pneumonia is an infection of the lungs that causes cough (often productive), fever, chest pain with breathing, rapid breathing, and shortness of breath; severity varies by cause and patient.",
+    "diseases": ["Pneumonia"],
+    "symptoms": ["cough", "fever", "chest pain", "shortness of breath", "productive cough"]
+  },
+  {
+    "id": "aafa-allergy-1",
+    "title": "Allergic rhinitis — AAFA (summary)",
+    "source": "Asthma and Allergy Foundation of America",
+    "url": "https://www.aafa.org/allergic-rhinitis/",
+    "text": "Allergic rhinitis (hay fever) produces sneezing, nasal congestion, runny nose, itchy eyes and throat, often triggered by pollen, dust, or pet dander and worsened seasonally.",
+    "diseases": ["Allergic rhinitis"],
+    "symptoms": ["sneezing", "runny nose", "nasal congestion", "itchy eyes"]
+  },
+  {
+    "id": "mayoclinic-uti-1",
+    "title": "Urinary tract infection — Mayo Clinic (summary)",
+    "source": "Mayo Clinic",
+    "url": "https://www.mayoclinic.org/diseases-conditions/urinary-tract-infection/symptoms-causes/syc-20353447",
+    "text": "A urinary tract infection commonly causes a frequent urge to urinate, pain or burning during urination, cloudy or strong-smelling urine, and sometimes lower abdominal pain or fever.",
+    "diseases": ["Urinary tract infection"],
+    "symptoms": ["urinary urgency", "painful urination", "cloudy urine", "lower abdominal pain", "fever"]
+  },
+  {
+    "id": "nih-appendicitis-1",
+    "title": "Appendicitis — NIH (summary)",
+    "source": "National Institutes of Health",
+    "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/appendicitis",
+    "text": "Appendicitis typically causes sudden onset of abdominal pain (often starting near the navel and moving to the lower right), loss of appetite, nausea, and sometimes fever; it often requires urgent evaluation.",
+    "diseases": ["Appendicitis"],
+    "symptoms": ["abdominal pain", "loss of appetite", "nausea", "fever"]
+  },
+  {
+    "id": "nih-migraine-1",
+    "title": "Migraine — NIH (summary)",
+    "source": "National Institutes of Health",
+    "url": "https://www.ninds.nih.gov/health-information/disorders/migraine",
+    "text": "Migraine is a neurological headache disorder characterized by moderate to severe throbbing head pain, often one-sided, and may include nausea, vomiting, and sensitivity to light or sound.",
+    "diseases": ["Migraine"],
+    "symptoms": ["headache", "nausea", "vomiting", "photophobia", "one-sided pain"]
+  },
+  {
+    "id": "who-bleeding-disorder-1",
+    "title": "Severe bleeding / hemorrhage (triage note)",
+    "source": "World Health Organization (triage guidance)",
+    "url": "https://www.who.int/publications",
+    "text": "Significant uncontrolled bleeding, fainting, or signs of shock (pale skin, rapid pulse) indicate a medical emergency and require immediate emergency care.",
+    "diseases": ["Hemorrhage", "Bleeding disorder"],
+    "symptoms": ["severe bleeding", "fainting", "pale skin", "rapid pulse"]
+  },
+  {
+    "id": "cdc-dehydration-1",
+    "title": "Dehydration — CDC (summary)",
+    "source": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/healthywater/emergency/extreme-weather/dehydration.html",
+    "text": "Dehydration can result from vomiting or diarrhea and causes dizziness, decreased urination, dry mouth, and weakness; severe dehydration is an emergency, especially in children and older adults.",
+    "diseases": ["Dehydration"],
+    "symptoms": ["dizziness", "decreased urination", "dry mouth", "weakness"]
+  }
+]
+
